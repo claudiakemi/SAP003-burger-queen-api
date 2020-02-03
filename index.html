@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      fetch('http://localhost:3000/api/products')
+        .then(data => data.json())
+        .then(body => {
+          const template = body.map(item => `
+          <li>${item.name} - R$ ${item.price},00</li>
+          `).join('');
+          document.querySelector('body').innerHTML = template;
+        })
+    </script>
+  </body>
+</html>
